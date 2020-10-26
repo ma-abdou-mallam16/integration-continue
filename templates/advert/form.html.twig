@@ -1,0 +1,42 @@
+{{ form_start(form) }}
+
+    <div class="form-group col-md-6">
+        {{ form_label(form.title, "Titre de l'annonce") }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_label(form.content, "Contenu de l'annonce") }}
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_label(form.author, "Author") }}
+        {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            {% if form.published is defined %}
+                {{ form_widget(form.published, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(form.published, "Published", {'attr': {'class': 'form-check-label'}}) }}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.image, {'attr': {'class': 'form-control-file'}}) }}
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_label(form.categories, "Categories") }}
+        {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
+        <a href="#" id="add_category" class="btn btn-default">Ajouter une catégorie</a>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+    </div>
+
+    {{ form_rest(form) }}
+{{ form_end(form) }}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'accueil !{% endblock %}
+
+{% block body %}
+    <div><a href="{{ path('add') }}">Ajouter annonce</a></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Modifier annonce</th>
+                <th>Supprimer annonce</th>
+           </tr>
+        </thead>
+        <tbody>
+            {% for listAdvert in listAdverts %}
+                <tr>
+                    <td>{{ listAdvert.id}}</td>
+                    <td>{{ listAdvert.author }}</td>
+                    <td>{{ listAdvert.title }}</td>
+                    <td>{{ listAdvert.content }}</td>
+                    <td>{{ listAdvert.date|date('d-m-Y') }}</td>
+                    <td><a href="{{ path('edit', {'id': listAdvert.id}) }}">Éditer</a></td>
+                    <td><a href="{{ path('delete', {'id': listAdvert.id}) }}">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            {% for p in range(1, nbPages) %}
+                <li class="{% if p==page %}active{% endif %} page-item"></li>
+                    <a href="{{ path('list', {'page':p})}}" class="page-link">{{ p }}</a>
+                </li>
+            {% endfor %}
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+{% endblock %}

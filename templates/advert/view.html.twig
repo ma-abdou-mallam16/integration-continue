@@ -1,0 +1,27 @@
+<p>
+	<strong>Titre de l'annonce :</strong>
+	{{ advert.title }}
+</p>
+<p>
+	<strong>Contenu de l'annonce :</strong>
+	{{ advert.content }}
+</p>
+<p>
+	<strong>Auteur :</strong>
+	{{ advert.author }}
+</p>
+<p>
+    <strong>Date de création :</strong>
+    <i>{{ advert.date|date('d-m-Y')}}<i>
+</p>
+<p><strong>Liste des categories :</strong></p>
+{% if not advert.categories is empty %}
+    <p>
+        {% for category in advert.categories %}
+            {{ category.name }}
+        {% endfor %}
+    </p>
+{% else %}
+    <p>Aucune categorie disponible</p>
+{% endif %}
+
