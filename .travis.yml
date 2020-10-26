@@ -1,7 +1,4 @@
 language: php
-php:
-  - '7.4.11'
 
 script:
    - composer install
-   - vendor/bin/simple-phpunit
